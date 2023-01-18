@@ -1,0 +1,41 @@
+Public Class Form1
+    Dim cxrili As New DataTable
+    Private Sub Label3_Click(sender As Object, e As EventArgs) Handles Lsapgan.Click
+    End Sub
+    Sub xelpasi()
+        Dim sax As String
+        Dim daricx, sap, sash, sapgan, sashgan As Single
+        Dim gasacemi As Double
+        Dim tve As Single
+        Dim Tasaki As Single
+        Call xelfasiscxrili()
+        sax = Tsax.Text : daricx = Tdaricx.Text : sapgan = Tsapgan.Text : sashgan = Tsashgan.Text : tve = Ttve.Text
+        sap = daricx * sapgan
+        If Tasaki < 1982 Then
+            sap = 0
+        End If
+        sash = (daricx - sap) * sashgan
+        gasacemi = daricx - sap - sash
+        cxrili.Rows.Add(New String() {Tsax.Text, Tdaricx.Text, Tsashgan.Text, Tsapgan.Text, sash, sap, Ttve.Text, gasacemi})
+        DGsia.DataSource = cxrili
+    End Sub
+    Sub xelfasiscxrili()
+        cxrili.Clear() : cxrili.Columns.Clear()
+        With cxrili
+            .Columns.Add("გვარი,სახელი")
+            .Columns.Add("დარიცხული ხელფასი")
+            .Columns.Add("საშემოსავლო განაკვეთი")
+            .Columns.Add("საპენსიო განაკვეთი")
+            .Columns.Add("საშემოსავლო თანხა")
+            .Columns.Add("საპენსიო თანხა")
+            .Columns.Add("თვე")
+            .Columns.Add("გასაცემი ხელფასი")
+        End With
+    End Sub
+    Private Sub gasacemi_Click(sender As Object, e As EventArgs) Handles gasacemi.Click
+        Call xelpasi()
+    End Sub
+    Private Sub gasacemiif_Click(sender As Object, e As EventArgs) Handles gasacemiif.Click
+        Call xelpasi()
+    End Sub
+End Class
